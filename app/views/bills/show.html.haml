@@ -1,13 +1,39 @@
+
 %p#notice= notice
-%p
-  %strong Name:
-  = @bill.name
-%p
-  %strong Dollar:
-  = @bill.dollar
-%p
-  %strong Cent:
-  = @bill.cent
-= link_to 'Edit', edit_bill_path(@bill)
-|
-\#{link_to 'Back', bills_path}
+%h1.event_name
+  %strong Event Name:
+  = @bill.event_name
+  = link_to 'Edit', edit_bill_path(@bill)
+
+
+.add_transactions
+  - if @bill.transactions.size > 0
+    %h2 All Transactions
+    - @bill.transactions.each do |transaction|
+      %p
+        %strong #{transaction.payer}
+        paid $
+        %strong #{transaction.dollar}
+        \.
+        %strong #{transaction.cent}
+        = link_to "Delete", [transaction.bill, transaction], method: :delete, data: {confirm: 'Are you sure"'}
+      
+
+.add_transactions
+  = form_for [@bill, Transaction.new] do |f|
+    %p
+      = f.label :payer
+      = f.text_field :payer
+    %p
+      = f.label :dollar
+      = f.text_field :dollar
+    %p
+      = f.label :cent
+      = f.text_field :cent
+    %p= f.submit "Add Transaction"
+
+
+
+
+
+

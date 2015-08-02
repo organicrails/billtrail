@@ -8,16 +8,9 @@
         - @bill.errors.full_messages.each do |message|
           %li= message
   .field
-    = f.label :name
+    = f.label :event_name
     %br/
-    = f.text_field :name
-  .field
-    = f.label :dollar
-    %br/
-    = f.text_field :dollar
-  .field
-    = f.label :cent
-    %br/
-    = f.text_field :cent
+    = f.text_field :event_name
+
   .actions
     = f.submit
