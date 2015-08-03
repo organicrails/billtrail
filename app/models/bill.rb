@@ -8,6 +8,7 @@ class Bill
 
   # contains many transactions
   embeds_many :transactions
+  embeds_many :friends
 
   # validates presence of event_name and urlID.
   validates_presence_of :event_name, :urlID

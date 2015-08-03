@@ -6,6 +6,22 @@
   = link_to 'Edit', edit_bill_path(@bill)
 
 
+%h2 Friends who Pitched In
+
+- if @bill.friends.size > 0
+  - @bill.friends.each do |friend|
+    %p
+      %strong Name: #{friend.name}
+      = link_to "Delete", [friend.bill, friend], method: :delete, data: {confirm: 'Are you sure"'}
+
+.add_friends
+  = form_for [@bill, Friend.new] do |f|
+    %p
+      = f.label :name
+      = f.text_field :name
+    %p= f.submit "Add Friend"
+
+
 .add_transactions
   - if @bill.transactions.size > 0
     %h2 All Transactions
@@ -31,9 +47,4 @@
       = f.label :cent
       = f.text_field :cent
     %p= f.submit "Add Transaction"
-
-
-
-
-
 
