@@ -8,11 +8,11 @@
         - @bill.errors.full_messages.each do |message|
           %li= message
   .field
-    = f.label :event_name
+    = f.label :event_name, "Enter an Event Name: "
     %br/
     = f.text_field :event_name
     %br/
-    = f.label :urlID
+    = f.label :urlID, "Choose a Unique ID for the event: "
     %br/
     = f.text_field :urlID
 
