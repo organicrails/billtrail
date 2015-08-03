@@ -1,6 +1,8 @@
 class BillsController < ApplicationController
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
+  helper_method :get_friends_array
+
   # GET /bills
   # GET /bills.json
   def index
@@ -60,6 +62,28 @@ class BillsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
+  # NON CRUD METHOD
+
+  # returns an array that includes all the Friends who splitted a particular bills
+  def get_friends_array
+
+    friends_array = Array.new
+
+    bill = Bill.find(params[:id])
+    friends = @bill.friends
+
+    (0...friends.length).each do |index|
+      friends_array << friends[index]["name"]
+    end
+    friends_array
+
+  end
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

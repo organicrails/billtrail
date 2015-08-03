@@ -39,7 +39,7 @@
   = form_for [@bill, Transaction.new] do |f|
     %p
       = f.label :payer
-      = f.text_field :payer
+      = f.select :payer, options_for_select(get_friends_array)
     %p
       = f.label :dollar
       = f.text_field :dollar
@@ -47,4 +47,3 @@
       = f.label :cent
       = f.text_field :cent
     %p= f.submit "Add Transaction"
-
