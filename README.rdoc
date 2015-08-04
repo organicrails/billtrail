@@ -1,28 +1,5 @@
-== README
+== BillTrail
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Second tutorial on Ruby on Rails. This project utilizes the Mongoid Gem to incorporate MongoDB into a rails app. The purpose of the project is to create a simple Bill tracking platform that users can record and track how much each person contribured to the Bill. It will display the total amount spent by per person and in total. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The tutorial can be found at organicrails.github.io/2015-07-29-Billtrail/
