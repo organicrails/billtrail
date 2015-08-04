@@ -2,4 +2,4 @@
 
 Second tutorial on Ruby on Rails. This project utilizes the Mongoid Gem to incorporate MongoDB into a rails app. The purpose of the project is to create a simple Bill tracking platform that users can record and track how much each person contribured to the Bill. It will display the total amount spent by per person and in total. 
 
-The tutorial can be found at organicrails.github.io/2015-07-29-Billtrail/
+The tutorial can be found at http://organicrails.github.io/2015-07-29-Billtrail/
