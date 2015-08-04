@@ -5,6 +5,23 @@
   = @bill.event_name
   = link_to 'Edit', edit_bill_path(@bill)
 
+.glance
+  %h2 At a Glance...
+  %p
+    The total amount spent on this bill is $
+    - total_bill_sum = Bill.to_currenty_syntax(get_grand_total[0], get_grand_total[1])
+    %strong= total_bill_sum[0]
+    \.
+    %strong= total_bill_sum[1]
+
+  - @bill.friends.each do |friend|
+    %p 
+      %strong= friend.name
+      paid for a total of $
+      %strong= get_individual_total[friend.name][:dollar]
+      \.
+      %strong= get_individual_total[friend.name][:cent]
+
 
 %h2 Friends who Pitched In
 
@@ -47,3 +64,4 @@
       = f.label :cent
       = f.text_field :cent
     %p= f.submit "Add Transaction"
+

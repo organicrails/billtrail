@@ -16,4 +16,13 @@ class Bill
   #validates the uniqueness of urlID
   validates_uniqueness_of :urlID
 
+
+  def self.to_currenty_syntax(dollar, cent)
+  	if cent > 100
+  		dollar+= cent/100
+  		cent = cent%100
+	end
+	[dollar, cent]
+  end
+
 end

@@ -2,6 +2,8 @@ class BillsController < ApplicationController
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
   helper_method :get_friends_array
+  helper_method :get_individual_total
+  helper_method :get_grand_total
 
   # GET /bills
   # GET /bills.json
@@ -82,6 +84,41 @@ class BillsController < ApplicationController
 
   end
 
+  # return the INDIVIDUAL amount of dollars and cents per person. 
+  def get_individual_total
+
+    friends_array = Array.new
+
+    bill = Bill.find(params[:id])
+    transactions = @bill.transactions
+
+    totals = Hash.new { |hash, key| hash[key] = { dollar: 0, cent: 0 } }
+    transactions.each do |t|
+
+      totals[t.payer][:dollar] += t.dollar
+      totals[t.payer][:cent] += t.cent
+
+      if totals[t.payer][:cent] >= 100
+        totals[t.payer][:dollar] += totals[t.payer][:cent] / 100
+        totals[t.payer][:cent] = totals[t.payer][:cent] % 100
+      end
+
+    end
+
+    totals
+  end
+
+  # return the total amount of dollars and cents in this bill
+  def get_grand_total
+    friends_array = Array.new
+
+    bill = Bill.find(params[:id])
+    transactions = @bill.transactions
+    total_dollar = transactions.inject(0) { |sum, t| sum + t.dollar }
+    total_cent = transactions.inject(0) { |sum, t| sum + t.cent }
+
+    [total_dollar, total_cent]
+  end
 
 
 
