@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+.event_name{
+	margin-bottom: 50px;
+}
+
+.add_friends, .add_transactions, .glance{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
